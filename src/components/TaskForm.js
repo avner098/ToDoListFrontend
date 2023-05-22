@@ -40,12 +40,16 @@ const TaskForm = ()=>{
 
         <label>Task content:</label>
         <input type="text" onChange={(e)=> setContent(e.target.value)} value={content}></input>
-
+        
         <label>Task status:</label>
-        <input type="text" onChange={(e)=> setStatus(e.target.value)} value={status}></input>
+        
+        <select  onChange={(e)=> setStatus(e.target.value)} value={status}>
+        <option>Active</option>
+        <option>Disactive</option>
+        </select>
 
-        <label>Task finish_date:</label>
-        <input type="text" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date}></input>
+        <label>Task completion date:</label>
+        <input type="date" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date}></input>
 
         <button>Add Task</button>
         {err && <div className="error">{err}</div>}

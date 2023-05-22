@@ -51,6 +51,9 @@ header a {
   font-size: 0.9em;
   color: #000000;
 }
+.taskDet #edit {
+  top: 50px;
+}
 .taskDet span {
   position: absolute;
   top: 20px;
@@ -63,10 +66,10 @@ header a {
 }
 
 /*task form */
-label, input {
+label, input,select {
   display: block;
 }
-input {
+input,select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
