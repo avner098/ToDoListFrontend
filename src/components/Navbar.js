@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { authContext } from "../context/authContext"
+import { AuthContext } from "../context/authContext"
 import { useContext } from "react"
 const Navbar = () => {
 
    
 
-    const context = useContext(authContext);
+    const context = useContext(AuthContext);
 
     const logout = () => {
       localStorage.removeItem('user');
@@ -23,7 +23,7 @@ const Navbar = () => {
                 <nav >
                     <div>
                         <button onClick={logout}>
-                            <span class="material-symbols-outlined">logout</span>
+                            <span className="material-symbols-outlined">logout</span>
                         </button>
                     </div>
                     <div>

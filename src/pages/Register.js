@@ -1,5 +1,5 @@
 import { useState,useContext } from "react"
-import { authContext } from "../context/authContext"
+import { AuthContext } from "../context/authContext"
 
 
 const Register = ()=>{
@@ -7,7 +7,7 @@ const Register = ()=>{
     const [password,setPassword]= useState('')
     const [error,setError]=useState(null)
     const [loading,setLoading] = useState(null)
-    const context = useContext(authContext)
+    const context = useContext(AuthContext)
 
     const register = async(email,password) =>{
         setLoading(true)
@@ -40,12 +40,12 @@ const Register = ()=>{
     }
 
     return(
-        <form className="register" onsubmit={submitHendler}>
+        <form className="register" onSubmit={submitHendler}>
             <h4>Register</h4>
-            <label><span class="material-symbols-outlined">mail</span></label>
+            <label><span className="material-symbols-outlined">mail</span></label>
             <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
 
-            <label><span class="material-symbols-outlined">password</span></label>
+            <label><span className="material-symbols-outlined">password</span></label>
             <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
 
             <button disabled={loading}>Register</button>
