@@ -17,6 +17,18 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+.logo-container {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+}
+
+.logo-container img {
+  margin-left: 20px; 
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+}
+
 header a {
   color: #000000;
   text-decoration: none;
@@ -94,4 +106,21 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+}
+
+namv a{
+  margin-left: 10px;
+
+}
+form.register,form.login{
+  max-width: 400px;
+  margin: 40px , auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
 }
