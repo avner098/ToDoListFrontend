@@ -16,13 +16,14 @@ const Login = ()=>{
         setLoading(true)
         setError(null)
 
-        const response = await fetch('/api/user/login',{
-            method: 'GET',
+        const response = await fetch('/api/user/Login',{
+            method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({email,password})
         })
         
         const json = await  response.json()
+        console.log(json)
 
         if(!response.ok){
             setLoading(false)
@@ -30,11 +31,13 @@ const Login = ()=>{
         }
         if(response.ok){
             localStorage.setItem('user', JSON.stringify(json))
-            context({type : 'LOGIN',payload : json})
+            context.dispatch({type : 'LOGIN',payload : json})
             setLoading(false)
         }
             
     }
+
+
     const submitHendler = async (e) =>{
         e.preventDefault()
 

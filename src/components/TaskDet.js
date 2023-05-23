@@ -1,10 +1,19 @@
 import { useContext } from "react"
 import { TasksContext } from "../context/TaskContext"
+import { AuthContext } from "../context/authContext"
 
 const TaskDet =({task})=>{
 const {dispatch} =useContext(TasksContext)
+const {user} = useContext(AuthContext);
+
 const handleDelete= async() =>{
-    const res = await fetch("/tasks/"+task._id,{method: 'DELETE'})
+    if(!user){
+        return
+    }
+    const res = await fetch("/api/tasks/"+task._id,{
+        method: 'DELETE',
+        headers: {'Autthorization' : `Bearer ${user.token}`}
+    })
     //the obj i delete
     const json = await res.json()
     if(res.ok){
@@ -14,7 +23,11 @@ const handleDelete= async() =>{
 }
 
 const handleEdit= async() =>{
-    const res = await fetch("/tasks/"+task._id,{method: 'DELETE'})
+    if(!user){
+        return
+    }
+    const res = await fetch("/api/tasks/"+task._id,{method: 'DELETE',
+    headers: {'Autthorization' : `Bearer ${user.token}`}})
     //the obj i delete
     const json = await res.json()
     if(res.ok){

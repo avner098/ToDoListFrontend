@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { TasksContext } from "../context/TaskContext"
+import { AuthContext } from "../context/authContext"
 
 const TaskForm = ()=>{
     const [title,setTitle] = useState('')
@@ -8,13 +9,24 @@ const TaskForm = ()=>{
     const [finish_date,setFinish_date] = useState('')
     const [err,setErr] = useState(null)
     const {dispatch} =useContext(TasksContext)
-
+    const {user} = useContext(AuthContext);
 
     const submitHandler = async(e)=>{
         e.preventDefault()
+    
 
+        if(!user){
+            return
+        }
         const task={title,content,status,finish_date}
-        const res = await fetch('/tasks',{method:'POST', body: JSON.stringify(task),headers:{'Content-Type': 'application/json'}})
+        const res = await fetch('/api/tasks/',{ 
+            method:'POST',
+            body: JSON.stringify(task),
+            headers:{
+                'Content-Type': 'application/json',
+                'Autthorization' : `Bearer ${user.token}`
+            }
+        })
         //back from server
         const json =await res.json()
         if(!res.ok){
@@ -44,8 +56,8 @@ const TaskForm = ()=>{
         <label>Task status:</label>
         
         <select  onChange={(e)=> setStatus(e.target.value)} value={status}>
-        <option>Active</option>
         <option>Disactive</option>
+        <option>Active</option>
         </select>
 
         <label>Task completion date:</label>
