@@ -28,6 +28,7 @@ const Register = ()=>{
         if(response.ok){
             localStorage.setItem('user', JSON.stringify(json))
             context.dispatch({type : 'LOGIN',payload : json})
+            
             setLoading(false)
         }
             

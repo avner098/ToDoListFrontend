@@ -118,7 +118,7 @@ nav{
   align-items: center;
 }
 
-namv a{
+nav a{
   margin-left: 10px;
 
 }
@@ -155,4 +155,20 @@ form.register,form.login{
 
 .connecting_btn a:hover {
   background-color: rgb(177, 248, 177);
+}
+
+.create {
+  position: relative;
+}
+
+.exit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
