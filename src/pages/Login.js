@@ -47,14 +47,26 @@ const Login = ()=>{
     return(
         <form className="login" onSubmit={submitHendler}>
             <h4>Login</h4>
-            <label><span className="material-symbols-outlined">mail</span></label>
-            <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            <div className="form-group">
+            <label htmlFor="exampleInputEmail1" className="form-label mt-4"><span className="material-symbols-outlined">mail</span></label>
+            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="xxxx@xxxx.com" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+            </div>
+            <div className="form-group">
+            <label htmlFor="exampleInputPassword1" className="form-label mt-4"><span className="material-symbols-outlined">password</span></label>
+            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+            </div>
 
-            <label><span className="material-symbols-outlined">password</span></label>
-            <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+            
+            <button disabled={loading} className="btn btn-success" >Login</button>
+            
+            {/* {error && <div className="alert alert-dismissible alert-danger">{error}</div>} */}
 
-            <button disabled={loading} >Login</button>
-            {error && <div className="error">{error}</div>}
+            {error &&
+            <div className="alert alert-dismissible alert-warning">
+            
+            <strong>Oh snap! </strong> 
+            {error}
+            </div>}
         </form>
 
     )

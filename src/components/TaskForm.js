@@ -5,9 +5,10 @@ import { AuthContext } from "../context/authContext"
 const TaskForm = ()=>{
     const [title,setTitle] = useState('')
     const [content,setContent] = useState('')
-    const [status,setStatus] = useState('')
+    const [status,setStatus] = useState('Active')
     const [finish_date,setFinish_date] = useState('')
-    const [plusbutton,setPlusbutton] = useState(false)
+    
+    const [urgency,setUrgency] = useState('Low')
     const [err,setErr] = useState(null)
     const {dispatch} =useContext(TasksContext)
     const {user} = useContext(AuthContext);
@@ -19,7 +20,8 @@ const TaskForm = ()=>{
         if(!user){
             return
         }
-        const task={title,content,status,finish_date}
+
+        const task={title,content,status,finish_date,urgency}
         
         const res = await fetch('/api/tasks/',{ 
             method:'POST',
@@ -38,51 +40,53 @@ const TaskForm = ()=>{
             setErr(null)
             setTitle('')
             setContent('')
-            setStatus('')
+            setStatus('Active')
+            setUrgency('Low')
             setFinish_date('')
             dispatch({type:'CREATE_TASK',payload:json})
-            setPlusbutton(false)
             console.log('new task added',json)
         }
     }
 
    return(
     <div className= "taskform">
-        {!plusbutton ?
-
-        <button type="button" onClick={() => setPlusbutton(true)}>
-            <span class="material-symbols-outlined">add_circle</span>
-        </button>
-
-        : 
+        
 
         <form className="create" onSubmit={submitHandler}>
 
             <h2>Add New Task</h2>
-            <button type="button" className= "exit-button" onClick={() => setPlusbutton(false)}>
-                <span class="material-symbols-outlined" >close</span>
-            </button>
 
-            <label>Task Title:</label>
-            <input type="text" onChange={(e)=> setTitle(e.target.value)} value={title}></input>
 
-            <label>Task content:</label>
-            <input type="text" onChange={(e)=> setContent(e.target.value)} value={content}></input>
+            <div className="form-group">
+                <label>Task Title:</label>
+                <input   input type="text"  className="form-control" onChange={(e)=> setTitle(e.target.value)} value={title}></input>
+            </div>
+
+           
+            <div className="form-group">
+                <label  className="form-label mt-4">Task content:</label>
+                <textarea className="form-control" id="exampleTextarea" rows="3"onChange={(e)=> setContent(e.target.value)} value={content}></textarea>
+            </div>
+
+            <div className="form-group">
+                <label className="form-label mt-4">Task Urgency:</label>
+                <select className="form-control" id="exampleSelect1"  onChange={(e)=> setUrgency(e.target.value)} value={urgency}>
+                    <option >Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
             
-            <label>Task status:</label>
-            
-            <select  onChange={(e)=> setStatus(e.target.value)} value={status}>
-            <option>Disactive</option>
-            <option>Active</option>
-            </select>
+           
+
 
             <label>Task completion date:</label>
-            <input type="date" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date}></input>
+            <input type="date" className="form-control" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date}></input>
 
-            <button>Add Task</button>
+            <button className="btn btn-secondary">Add Task</button>
             {err && <div className="error">{err}</div>}
         </form>
-        }
+        
     </div>
    )
 }
