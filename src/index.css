@@ -2,13 +2,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
 
-header .container {
-  max-width: 1400px;
+.login ,.register{
+  max-width: 400px;
   margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 20px;
+  background-color:#fdf6e3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login h2,.register h2{
+  margin-top: 0;
+  text-align: center; 
+  color: #333;
+}
+
+.login .form-group ,.register .form-group {
+  margin-top: 20px;
+}
+
+.login .form-label ,.register .form-label{
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login .form-control ,.register .form-control{
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login .btn ,.register .btn {
+  display: block;
+  
+  margin-top: 20px;
+  padding: 10px;
+ 
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login .btn:disabled  ,.register .btn:disabled  {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+/* Navbar container */
+
+
+.logo-container h1 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  margin-right: 40px;
+}
+
+
+.nav-item {
+  margin-right: 10px;
+}
+
+
+.nav-item a:hover {
+  background-color: #555;
+  text-decoration: none;
+  border-radius: 5px;
+
 }
 
 .logo-container {
@@ -21,7 +87,7 @@ header .container {
 .logo-container img {
   margin-left: 20px; 
   max-width: 100px;
-  max-height: 100px;
+  max-height: 80px;
   margin-right: 10px;
 }
 
@@ -30,55 +96,22 @@ header .container {
   max-height: 100px;
 }
 
-/* header a {
-  color: #000000;
-  text-decoration: none;
-} */
+
 .pages{
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
 }
 
-/* homepage */
-.home {
-  display: grid;
-  /*grid-template-columns: 1fr 1fr;*/
-  gap: 100px;
-}
-.taskDet {
-  background: #ffffff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-}
-.taskDet h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: #ed1f61
-}
-.taskDet p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #000000;
-}
-.taskDet #edit {
-  top: 50px;
-}
-.taskDet span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  background: #ffffff;
-  padding: 6px;
-  border-radius: 50%;
-  color: #000000;
-}
+
+
 
 /*task form */
+.taskform{
+  width: 400px;
+ 
+}
+
 label, input,select {
   display: block;
 }
@@ -92,13 +125,14 @@ input,select {
   box-sizing: border-box;
 }
 form button {
-  background: #ed1f61;
+ 
   border: 0;
   color: #ffffff;
   padding: 10px;
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 div.error {
   padding: 10px;
@@ -109,22 +143,14 @@ div.error {
   margin: 20px 0;
 }
 
-nav{
-  display: flex;
-  align-items: center;
-}
 
-nav a{
-  margin-left: 10px;
-
-}
-form.register,form.login,form.create{
+form.register,form.create{
   align-items: center;
   max-width: 400px;
   margin: 40px , auto;
 
   padding: 20px;
-  background-color:#FFFFD5;
+  background-color:#fdf6e3;
   border-radius: 4px;
   color:#000000
 }
@@ -137,12 +163,7 @@ form.register,form.login,form.create{
   align-items: center;
   margin-right: 10px;
   text-decoration: none;
-  /*
-  color: #000;
-  background-color: #eaeaea;
-  border: 2px solid rgb(177, 248, 177);
-  padding: 8px 16px;
-  border-radius: 4px; */
+ 
 }
 
 .connecting_btn a label {
@@ -153,9 +174,34 @@ form.register,form.login,form.create{
   margin-left: 5px;
 }
 
-/* .connecting_btn a:hover {
-  background-color: rgb(177, 248, 177);
-} */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  text-align: center;
+}
+
+.not-found-heading {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.not-found-message {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+.home404{
+  margin-top: 1px;
+  margin-left: 5px;
+}
+.not-found-link {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+
 
 .create {
   position: relative;
@@ -176,3 +222,91 @@ form.register,form.login,form.create{
 .login-btn {
   margin-bottom: 10px;
 }
+
+.menu{
+
+  display: none;
+  margin-bottom: 5px;
+}
+.linkbtn{
+  width: 100px;
+}
+
+.hometaskform{
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translate(-32%, -35%);
+  width: 300px;
+} 
+
+@media screen and (max-width: 991px) {
+  .menu {
+    display: block;
+  }
+  
+  .hometaskform{
+    position: fixed;
+    
+    top: 40%;
+    left: 45%;
+
+  }
+  
+  .taskform{
+    width: 250px;
+   
+  }
+}
+
+
+.done{
+  position: absolute;
+  right: 50px;
+  top : 40%;
+  font-size: 60px;
+  cursor: pointer;
+  padding: 10px;
+ 
+}
+
+
+
+
+
+.pop-out-card,.done {
+  transition: all .2s;
+}
+.pop-out-card:hover {
+  box-shadow: 2px 12px 15px #999;
+}
+.pop-out-card.with-transform:hover {
+  transform: translateY(-10px);
+}
+
+
+.about-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-heading {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.about-text {
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+
+.about-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 4px solid #000000;
+}
+

@@ -46,7 +46,7 @@ const Login = ()=>{
 
     return(
         <form className="login" onSubmit={submitHendler}>
-            <h4>Login</h4>
+            <h2><strong>Login</strong></h2>
             <div className="form-group">
             <label htmlFor="exampleInputEmail1" className="form-label mt-4"><span className="material-symbols-outlined">mail</span></label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="xxxx@xxxx.com" onChange={(e)=>setEmail(e.target.value)} value={email}/>

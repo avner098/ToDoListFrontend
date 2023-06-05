@@ -42,7 +42,7 @@ const Register = ()=>{
 
     return(
         <form className="register" onSubmit={submitHendler}>
-            <h4>Register</h4>
+            <h2><strong>Register</strong></h2>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1" className="form-label mt-4"><span className="material-symbols-outlined">mail</span></label>
                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="xxxx@xxxx.com" onChange={(e)=>setEmail(e.target.value)} value={email}/>

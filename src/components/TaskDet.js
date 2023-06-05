@@ -3,14 +3,15 @@ import { TasksContext } from "../context/TaskContext"
 import { AuthContext } from "../context/authContext"
 
 
-const TaskDet =({task})=>{
+
+const TaskDet =({task,showEditOption})=>{
 const {dispatch} =useContext(TasksContext)
 const {user} = useContext(AuthContext);
 
 
 const [title,setTitle] = useState(task.title)
 const [content,setContent] = useState(task.content)
-const [status,setStatus] = useState(task.status)
+const [status] = useState(task.status)
 const [finish_date,setFinish_date] = useState(task.finish_date)
 const [urgency,setUrgency] = useState(task.urgency)
 const [editMode,setEditMode] = useState(false)
@@ -26,7 +27,7 @@ const handleDelete= async() =>{
         method: 'DELETE',
         headers: {'Autthorization' : `Bearer ${user.token}`}
     })
-    //the obj i delete
+    
     const json = await res.json()
     if(res.ok){
         dispatch({type:'DELETE_TASK',payload:json})
@@ -42,8 +43,17 @@ const handleEdit = async (event) => {
     return;
   }
 
+
+
  
   const updatedTask={title,content,status,finish_date,urgency}
+
+  if (event.target.id === 'done-button') {
+    
+    updatedTask.status = 'Disactive'
+    console.log('done', updatedTask)
+  }
+
   const res = await fetch('/api/tasks/'+ task._id,{ 
     method:'PATCH',
     body: JSON.stringify(updatedTask),
@@ -63,8 +73,11 @@ const handleEdit = async (event) => {
   }
 }
 
-const urgencyColor = () =>{
-  switch(urgency){
+const urgencyColor = () => {
+  if (!showEditOption) {
+    return 'card text-white bg-lavender mb-3';
+  }
+  switch (urgency) {
     case 'Low':
       return 'card text-white bg-success mb-3'
     case 'Medium':
@@ -100,8 +113,9 @@ const getDaysLeft = (finishDate) =>{
   
 
 return (
+      
 
-      <div className={urgencyColor()} style={{ maxWidth: "300rem"}} >
+      <div className={urgencyColor()} style={{ maxWidth: "300rem",boxShadow:"0px 5px 10px 0px rgba(0, 0, 0, 0.5)"}} >
         <div className="card-header">
           <strong>Urgency: </strong> {task.urgency}
           <span className="material-symbols-outlined" onClick={handleDelete} style={{ 
@@ -109,12 +123,13 @@ return (
                 right: "20px",
                 cursor: "pointer"
                 }}>delete </span>
-          
-              <span id="edit" className="material-symbols-outlined"onClick={() => setEditMode(true)}style={{ 
-                position: "absolute",
-                right: "60px",
-                cursor: "pointer"
+                {showEditOption&&( <span id="edit" className="material-symbols-outlined" onClick={() => setEditMode(true)} style={{
+                  position: "absolute",
+                  right: "60px",
+                  cursor: "pointer"
                 }}>edit</span>
+                )}
+            
             
         </div>
         <div className="card-body">
@@ -141,14 +156,10 @@ return (
                 <select   className="form-control" onChange={(e)=> setUrgency(e.target.value)} value={urgency}>
                     <option>Low</option>
                     <option>Medium</option>
-                    <option>High</option>
+                    <option>High</option> 
                 </select>
       
-              <label>Task status:</label>
-              <select className="form-control" onChange={(e) => setStatus(e.target.value)} value={status}>
-                <option>Disactive</option>
-                <option>Active</option>
-              </select>
+             
       
               <label>Task completion date:</label>
               <input
@@ -156,6 +167,7 @@ return (
                 className="form-control"
                 onChange={(e) => setFinish_date(e.target.value)}
                 value={finish_date}
+                min={new Date().toISOString().split('T')[0]}
               />
       
               <button type="submit" className="btn btn-light" style={{marginRight: "10px"}}>Save Changes</button>
@@ -174,20 +186,11 @@ return (
                 <strong>Days left: </strong>  {
                 getDaysLeft(task.finish_date)}
               </p>
+              {showEditOption&&
+              <span className="done material-symbols-outlined" onClick={handleEdit} id='done-button'>done_outline</span>
+              }
 
-              {/* <span className="material-symbols-outlined" onClick={handleDelete} style={{ 
-                position: "absolute",
-                top: "12px",
-                right: "20px",
-                cursor: "pointer"
-                }}>delete </span>
-          
-              <span id="edit" className="material-symbols-outlined"onClick={() => setEditMode(true)}style={{ 
-                position: "absolute",
-                top: "12px",
-                right: "60px",
-                cursor: "pointer"
-                }}>edit</span> */}
+            
             </>
     
           )}

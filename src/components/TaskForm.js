@@ -59,7 +59,12 @@ const TaskForm = ()=>{
 
             <div className="form-group">
                 <label>Task Title:</label>
-                <input   input type="text"  className="form-control" onChange={(e)=> setTitle(e.target.value)} value={title}></input>
+                <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        />
             </div>
 
            
@@ -81,10 +86,10 @@ const TaskForm = ()=>{
 
 
             <label>Task completion date:</label>
-            <input type="date" className="form-control" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date}></input>
+            <input type="date" className="form-control" onChange={(e)=> setFinish_date(e.target.value)} value={finish_date} min={new Date().toISOString().split('T')[0]}></input>
 
             <button className="btn btn-secondary">Add Task</button>
-            {err && <div className="error">{err}</div>}
+            {err && <div className="alert alert-dismissible alert-warning">{err}</div>}
         </form>
         
     </div>
