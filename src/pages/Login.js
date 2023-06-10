@@ -10,13 +10,13 @@ const Login = ()=>{
 
     const context = useContext(AuthContext)
 
-
+    
 
     const login = async(email,password) =>{
         setLoading(true)
         setError(null)
 
-        const response = await fetch('/api/user/Login',{
+        const response = await fetch('https://to-do-list-backend-theta.vercel.app/api/user/Login',{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({email,password})

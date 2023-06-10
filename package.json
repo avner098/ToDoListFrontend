@@ -1,5 +1,5 @@
 {
-  "proxy": "https://to-do-list-backend-theta.vercel.app/",
+  
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
