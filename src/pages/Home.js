@@ -23,7 +23,7 @@ const Home =()=>{
     useEffect(()=>{
         
         const fetchTask = async ()=>{
-            const res = await fetch('/api/tasks/',{
+            const res = await fetch('https://to-do-list-backend-theta.vercel.app/api/tasks/',{
                 headers: {
                     'Autthorization' : `Bearer ${user.token}`
                 }

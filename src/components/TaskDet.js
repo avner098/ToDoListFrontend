@@ -23,7 +23,7 @@ const handleDelete= async() =>{
     if(!user){
         return
     }
-    const res = await fetch("/api/tasks/"+task._id,{
+    const res = await fetch("https://to-do-list-backend-theta.vercel.app/api/tasks/"+task._id,{
         method: 'DELETE',
         headers: {'Autthorization' : `Bearer ${user.token}`}
     })
@@ -54,7 +54,7 @@ const handleEdit = async (event) => {
     console.log('done', updatedTask)
   }
 
-  const res = await fetch('/api/tasks/'+ task._id,{ 
+  const res = await fetch('https://to-do-list-backend-theta.vercel.app/api/tasks/'+ task._id,{ 
     method:'PATCH',
     body: JSON.stringify(updatedTask),
     headers:{

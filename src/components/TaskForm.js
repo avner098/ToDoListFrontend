@@ -23,7 +23,7 @@ const TaskForm = ()=>{
 
         const task={title,content,status,finish_date,urgency}
         
-        const res = await fetch('/api/tasks/',{ 
+        const res = await fetch('https://to-do-list-backend-theta.vercel.app/api/tasks/',{ 
             method:'POST',
             body: JSON.stringify(task),
             headers:{
