@@ -6,6 +6,7 @@ const Register = ()=>{
     const [email,setEmail]= useState('')
     const [password,setPassword]= useState('')
     const [error,setError]=useState(null)
+    const [errorClass,setErrorClass]=useState('alert alert-dismissible alert-warning')
     const [loading,setLoading] = useState(null)
     const context = useContext(AuthContext)
 
@@ -22,14 +23,21 @@ const Register = ()=>{
         const json =response.json()
         console.log(json)
         if(!response.ok){
-            setLoading(false)
-            setError(json.error)
-        }
-        if(response.ok){
-            localStorage.setItem('user', JSON.stringify(json))
-            context.dispatch({type : 'LOGIN',payload : json})
             
             setLoading(false)
+            setError('This email is registered in our system, please enter another email')
+            setErrorClass('alert alert-dismissible alert-warning')
+        }
+        if(response.ok){
+           
+            localStorage.removeItem('user');
+            context.dispatch({ type: 'LOGOUT' });
+            
+            setPassword('')
+            setEmail('')
+            setLoading(false)
+            setError('You have successfully registered')
+            setErrorClass('alert alert-dismissible alert-success')
         }
             
     }
@@ -52,12 +60,12 @@ const Register = ()=>{
                 <input type="password"  className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
             </div>
             <button className="btn btn-success" disabled={loading}>Register</button>
-            {/* {error && <div className="error">{error}</div>} */}
+           
 
             {error &&
-            <div className="alert alert-dismissible alert-warning">
+            <div className={errorClass}>
             
-            <strong>Oh snap! </strong> 
+            
             {error}
             </div>}
         </form>

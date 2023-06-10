@@ -59,7 +59,7 @@ const Login = ()=>{
             
             <button disabled={loading} className="btn btn-success" >Login</button>
             
-            {/* {error && <div className="alert alert-dismissible alert-danger">{error}</div>} */}
+           
 
             {error &&
             <div className="alert alert-dismissible alert-warning">
