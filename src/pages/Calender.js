@@ -94,7 +94,7 @@ const Calender = () => {
             <div className="custom-tile-content">
               {tasksOnDate.map((task, index) => (
                 <div key={index} onClick={() => setOpen(true)}>
-                  <p className="task-title">{task.title}</p>
+                  <p className="task-title " >{task.title}</p>
                 </div>
               ))}
             </div>
@@ -121,24 +121,25 @@ const Calender = () => {
       />
       {tasksOnDay && (
         <Popup open={open} closeOnDocumentClick onClose={closeModal}>
-          <div className="card bg-light mb-3" style={{color:"black", width: '100%' }}>
+          <div className="card bg-light mb-3" style={{color:"black", width: '100%',maxHeight: '90vh', overflow: 'auto' }}>
             <div className="card-header">
-              <label style={{fontSize: '22px'}}><strong>Tasks that need to be completed by today:</strong></label>
+              <label style={{fontSize: '22px',padding:'10px'}}><strong>Tasks that need to be completed by today:</strong></label>
               <span
                 className="material-symbols-outlined"
                 onClick={closeModal}
                 style={{
                   position: 'absolute',
-                  right: '10px',
+                  right: '6px',
                   top: '10px',
                   cursor: 'pointer',
-                  fontSize: '35px'
+                  fontSize: '30px',
+                  color: '#cb4b16',
                 }}
               >
                 cancel
               </span>
             </div>
-            <div className="card-body">
+            <div className="card-body" >
               {tasksOnDay.map((task, index) => (
                 <div className={handleUrgencyCard(task.urgency,task.status)} style={{ width: '100%' }} key={index}>
                   <div className="card-header">{task.status}</div>

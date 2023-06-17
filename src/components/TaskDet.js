@@ -133,7 +133,7 @@ return (
             
         </div>
         <div className="card-body">
-          <h4 className="card-title">{title}</h4>
+          <h4 className="card-title contentP">{title}</h4>
           
           {editMode ? (
             <form className="editform" onSubmit={handleEdit}>
@@ -175,7 +175,7 @@ return (
             </form>
           ) : (
             <>
-              <p className="card-text">
+              <p className="card-text contentP">
                 <strong>Content: </strong> {task.content}
               </p>
             

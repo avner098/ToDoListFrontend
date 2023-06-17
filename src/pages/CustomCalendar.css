@@ -2,7 +2,7 @@
 /* popup.css */
 .popup-content {
   margin: 0 auto;
-  width: 50%;
+  width: 70%;
 
 }
 .popup-arrow {
@@ -68,8 +68,8 @@
 }
 
 .react-calendar__month-view__days__day {
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 0px;
+  min-height: 0px;
   border-radius: 4px;
   font-size: 18px;
 }
@@ -133,3 +133,9 @@
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
 }
 
+
+@media (max-width: 480px) {
+  .task-title {
+    display: none;
+  }
+}
