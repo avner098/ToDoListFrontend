@@ -186,19 +186,11 @@ return (
                 <strong>Days left: </strong>  {
                 getDaysLeft(task.finish_date)}
               </p>
-              {showEditOption&&<div>
+              {showEditOption&&
               <span className="done material-symbols-outlined" onClick={handleEdit} id='done-button'>done_outline</span>
-              <label className="doneLabel" style={{ 
-              position: "absolute",
-              right: "50px",
-              top : "55%",
-              fontSize: "20px",
-              cursor: "pointer",
-              padding: "10px"}}>Done</label>
-              </div>
+            
               }
 
-            
             </>
     
           )}
