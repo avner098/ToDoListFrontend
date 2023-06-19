@@ -284,6 +284,10 @@ form.register,form.create{
     right: 5%;
     top : 20%;
   }
+  .doneLabel{
+    right: 5%;
+    top : 30%;
+  }
 }
 
 

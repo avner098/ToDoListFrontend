@@ -188,11 +188,11 @@ return (
               </p>
               {showEditOption&&<div>
               <span className="done material-symbols-outlined" onClick={handleEdit} id='done-button'>done_outline</span>
-              <label style={{ 
+              <label className="doneLabel" style={{ 
               position: "absolute",
               right: "50px",
-              top : "45%",
-              fontSize: "30px",
+              top : "55%",
+              fontSize: "20px",
               cursor: "pointer",
               padding: "10px"}}>Done</label>
               </div>
