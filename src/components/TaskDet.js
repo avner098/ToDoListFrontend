@@ -186,10 +186,9 @@ return (
                 <strong>Days left: </strong>  {
                 getDaysLeft(task.finish_date)}
               </p>
-              {showEditOption&&
-              <div className="done">
-              <span className="material-symbols-outlined" onClick={handleEdit} id='done-button'>done_outline</span>
-              <label>Done</label>
+              {showEditOption&&<div>
+              <span className="done material-symbols-outlined" onClick={handleEdit} id='done-button'>done_outline</span>
+              <label className="done">Done</label>
               </div>
               }
 
